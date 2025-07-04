@@ -1,43 +1,198 @@
 .order-item{
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-  align-items: start;
-  gap: 30px;
-  border: 1px solid tomato;
-  padding: 20px;
-  margin: 30px 0px;
-  font-size: 14px;
-  color: #505050;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 2fr; 
+    align-items: start;
+    gap: 30px;
+    border: 1px solid tomato;
+    padding: 20px;
+    margin: 30px 0px;
+    font-size: 14px;
+    color: #505050;
 }
 .order-item-food .order-item-name{
-  font-weight: 600;
+    font-weight: 600;
 }
 .order-item-name{
-  margin-top: 30px;
-  margin-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 5px;
 }
 .order-item-address{
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .order-item select{
-  background-color: #ffe8e4;
-  border: 1px solid tomato;
-  width: max(10vw,120px);
-  padding: 10px;
-  outline: none;
+    background-color: #ffe8e4;
+    border: 1px solid tomato;
+    width: max(10vw,120px);
+    padding: 10px;
+    outline: none;
 }
 
+/* --- NEW STYLES FOR REFUND SYSTEM IN ADMIN PANEL --- */
+
+.order-item-refund-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order-item-refund-section .refund-status {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.order-item-refund-section .refund-status.none { color: #888; }
+.order-item-refund-section .refund-status.requested,
+.order-item-refund-section .refund-status.pending_approval,
+.order-item-refund-section .refund-status.processing {
+    color: orange;
+}
+.order-item-refund-section .refund-status.approved,
+.order-item-refund-section .refund-status.completed {
+    color: green;
+}
+.order-item-refund-section .refund-status.rejected,
+.order-item-refund-section .refund-status.failed {
+    color: red;
+}
+
+.order-item-refund-section .refund-detail {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.refund-action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.refund-action-buttons button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    flex-grow: 1; 
+}
+
+.refund-action-buttons .approve-button {
+    background-color: #4CAF50; /* Green */
+}
+
+.refund-action-buttons .reject-button {
+    background-color: #f44336; /* Red */
+}
+
+
+/* --- NEW MODAL STYLES (Copied from frontend/MyOrder.css for consistency) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-content input[type="number"],
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0; /* Override previous margin */
+}
+
+.modal-actions button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-actions button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.modal-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* --- MEDIA QUERIES (Existing) --- */
 @media (max-width:1000px){
-  .order-item{
-    font-size: 12px;
-    grid-template-columns: 0.5fr 2fr 1fr;
-    padding: 15px 8px;
-  }
-  .order-item select{
-    padding: 5px;
-    font-size: 12px;
-  }
-  .order-item img{
-    width: 40px;
-  }
+    .order-item{
+        font-size: 12px;
+        grid-template-columns: 0.5fr 2fr 1fr; 
+        row-gap: 10px; 
+        padding: 15px 8px;
+    }
+    .order-item select{
+        padding: 5px;
+        font-size: 12px;
+    }
+    .order-item img{
+        width: 40px;
+    }
+    .order-item-refund-section {
+        grid-column: 1 / -1; /* Make it span full width on small screens */
+    }
+    .refund-action-buttons {
+        flex-direction: column; 
+    }
+    .refund-action-buttons button {
+        width: 100%; 
+    }
+    .modal-content {
+        padding: 20px;
+    }
 }

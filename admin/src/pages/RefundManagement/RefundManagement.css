@@ -1,0 +1,242 @@
+.refund-management {
+    margin: 50px 0px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.refund-management h3 { 
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.refund-management .message {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #e0f7fa;
+    color: #00796b;
+    border: 1px solid #b2ebf2;
+}
+
+.refund-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.refund-item-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.refund-item-card h4 { /* Using h4 as per RefundManagementPage.jsx */
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #454545;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.refund-item-card p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.refund-item-card .refund-status {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+.refund-item-card .refund-status.none { color: #888; }
+.refund-item-card .refund-status.requested,
+.refund-item-card .refund-status.pending_approval,
+.refund-item-card .refund-status.processing {
+    color: orange;
+}
+.refund-item-card .refund-status.approved,
+.refund-item-card .refund-status.completed {
+    color: green;
+}
+.refund-item-card .refund-status.rejected,
+.refund-item-card .refund-status.failed {
+    color: red;
+}
+
+.refund-item-card .refund-detail {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.refund-card-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+.refund-card-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.refund-card-actions button:hover {
+    opacity: 0.9;
+}
+
+.refund-card-actions .approve-button {
+    background-color: #4CAF50; /* Green */
+}
+
+.refund-card-actions .reject-button {
+    background-color: #f44336; /* Red */
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-content input[type="number"],
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+}
+
+.modal-actions button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.modal-actions button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.modal-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+    .refund-management {
+        margin: 20px;
+        padding: 15px;
+    }
+    .refund-management h3 {
+        font-size: 24px;
+    }
+    .refund-item-card {
+        padding: 15px;
+        font-size: 14px;
+    }
+    .refund-item-card h4 {
+        font-size: 16px;
+    }
+    .refund-item-card .actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .refund-item-card .actions button {
+        width: 100%;
+    }
+    .modal-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .refund-management {
+        margin: 10px;
+        padding: 10px;
+    }
+    .refund-management h3 {
+        font-size: 20px;
+    }
+    .refund-item-card {
+        font-size: 12px;
+    }
+    .refund-item-card h4 {
+        font-size: 14px;
+    }
+    .modal-content {
+        padding: 15px;
+    }
+}

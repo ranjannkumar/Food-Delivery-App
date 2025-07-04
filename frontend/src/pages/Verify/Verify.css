@@ -1,4 +1,4 @@
-.verify{
+/* .verify{
   min-height:60vh;
   display: grid;
 }
@@ -15,4 +15,33 @@
   100%{
     transform: rotate(360deg);
   }
+} */
+
+/* frontend/src/pages/Verify/Verify.css */
+.verify {
+    min-height: 80vh; /* Take up most of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    font-size: 1.2em;
+    color: #555;
+    text-align: center;
+    padding: 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; /* Light grey border */
+    border-top: 5px solid tomato; /* Top border in accent color to create spin effect */
+    border-radius: 50%; /* Make it a circle */
+    animation: spin 1s linear infinite; /* Apply spin animation */
+    margin-bottom: 20px; /* Space below the spinner */
+}
+
+/* Keyframe animation for the spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

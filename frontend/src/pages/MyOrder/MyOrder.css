@@ -1,48 +1,100 @@
-.my-orders{
-  margin: 50px 0px;
-}
-.my-orders .container{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 30px;
-}
+/* frontend/src/pages/MyOrder/MyOrder.css */
+
+/* Existing styles for .my-orders, .container, .my-orders-order, etc. */
+
 .my-orders-order{
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
-  align-items: center;
-  gap: 30px;
-  font-size: 14px;
-  padding: 10px 20px;
-  color: #454545;
-  border: 1px solid;
-}
-.my-orders-order img{
-  width: 50px;
-}
-.my-orders-order p span{
-  color: tomato;
-}
-.my-orders-order p b{
-  font-weight: 500;
-  color: #454545;
-}
-.my-orders-order button{
-  border: none;
-  padding: 12px 0px;
-  border-radius: 4px;
-  background-color: #ffe1e1;
-  cursor: pointer;
-  color: #454545;
+    /* ... existing grid-template-columns ... */
+    /* You might need to adjust grid-template-columns to fit the new button div better */
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1.5fr; /* Example adjustment, added more space for buttons */
+    align-items: center;
+    gap: 30px;
+    font-size: 14px;
+    padding: 10px 20px;
+    color: #454545;
+    border: 1px solid;
+    /* Add flex or grid to manage buttons if they are in a new div */
+    position: relative; /* Needed for absolute positioning if you choose that */
 }
 
+/* ... existing .my-orders-order img, p span, p b ... */
+
+/* Original button styling - this applies to both if not overridden */
+.my-orders-order button{
+    border: none;
+    padding: 12px 0px;
+    border-radius: 4px;
+    background-color: #ffe1e1;
+    cursor: pointer;
+    color: #454545;
+}
+
+/* New div to group action buttons */
+.order-actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 8px; /* Space between buttons */
+    /* If you want them side-by-side, use: flex-direction: row; align-items: center; */
+    /* grid-column: 6 / 7; */ /* Place in the last grid column, adjust based on your grid */
+    /* justify-self: end; */ /* Align to the end of the grid cell */
+}
+
+/* Specific style for the Request Refund button */
+.order-actions .request-refund-button {
+    background-color: #ff6347; /* A distinct color for refund */
+    color: white;
+    padding: 8px 15px; /* Slightly smaller padding for stacked buttons */
+    font-size: 14px;
+    width: 100%; /* Make it full width in its flex container */
+}
+
+/* Specific style for the Track Order button */
+.order-actions .track-order-button {
+    background-color: #4CAF50; /* Example: green for track order */
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    width: 100%;
+}
+
+
+/* --- NEW STYLES FOR REFUND SYSTEM --- */
+.my-orders-order .refund-status {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+    /* Ensure it spans across columns if needed */
+    grid-column: 1 / -1; /* Make it span all columns for better visibility */
+    text-align: left;
+}
+
+/* ... (rest of the refund status and modal styles from previous updates) ... */
+
+/* --- MEDIA QUERIES (Existing) --- */
 @media (max-width:900px) {
-  .my-orders-order{
-    grid-template-columns: 1fr 2fr 1fr;
-    row-gap: 5px;
-    font-size: 12px;
-  }
-  .my-orders-order button{
-    font-size: 10px;
-  }
+    .my-orders-order{
+        grid-template-columns: 1fr 2fr 1fr; /* Simplified grid */
+        row-gap: 10px; /* Increased row gap */
+        font-size: 12px;
+        padding: 15px 8px;
+    }
+    .my-orders-order button{
+        font-size: 10px;
+    }
+    .order-actions {
+        grid-column: 1 / -1; /* Make buttons span full width on small screens */
+        flex-direction: row; /* Keep them side-by-side on small screens if space allows, or column */
+        justify-content: center; /* Center buttons */
+        gap: 5px;
+    }
+    .order-actions button {
+        width: auto; /* Let buttons size naturally */
+        flex-grow: 1; /* Allow them to grow */
+    }
+    .my-orders-order .refund-status {
+        grid-column: 1 / -1; /* Ensure refund status spans full width */
+    }
+    .modal-content {
+        padding: 20px;
+    }
 }
