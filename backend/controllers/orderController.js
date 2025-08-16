@@ -4,7 +4,7 @@ import stripe from '../config/stripe.js';
 
 export const placeOrder = async(req,res) =>{
 
-    const frontend_url = "http://localhost:5173" 
+    const frontend_url = process.env.CLIENT_URL ;
 
     try {
         if (!req.user || !req.user.id) {
