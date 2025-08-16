@@ -1,0 +1,6 @@
+JWT_SECRET= yourjwtsecret
+STRIPE_SECRET_KEY=stripe secret key
+MONGO_URI =  mongodb://localhost:27017
+CLIENT_URL = frontend url
+ADMIN_URL =  admin url
+STRIPE_WEBHOOK_SECRET = webhook secret
